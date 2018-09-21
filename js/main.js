@@ -23,6 +23,9 @@
         s = ('0' + s ).slice(-2);
         ms = ('00' + ms).slice(-3); 
         var timerString = m + ':' + s + '.' + ms
+       if(isRunning===true&&timeLeft<5*1000){
+           timer.style.color="red";
+       }
         timer.textContent = timerString; 
         document.title = timerString;
 
@@ -39,6 +42,7 @@
                 timeLeft = 0;
                 timeToCountDown = 0;
                 updateTimer(timeLeft);
+                timer.style.color='white';
                 return;
             }
             countDown();
@@ -85,6 +89,7 @@
 
     reset.addEventListener('click', function(){
         timeToCountDown = 0;
+        timer.style.color = 'white';
         updateTimer(timeToCountDown);
     })
     
